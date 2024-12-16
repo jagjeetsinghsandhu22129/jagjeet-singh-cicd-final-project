@@ -54,9 +54,6 @@ cdk deploy --app "python app.py"
 
 
 
-Use AWS CLI
-You can also use the AWS CLI to list the resources:
-
 List Lambda Functions:
 
 
