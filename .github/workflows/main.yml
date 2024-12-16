@@ -1,0 +1,75 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  # Source stage will take care of the checkout of the repository
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+  # Build stage will install all the dependency and setup the environment
+  build:
+    runs-on: ubuntu-latest
+    needs: source
+    steps:
+      - name: Code checkout for this repo
+        uses: actions/checkout@v3
+    
+      - name: Setting up the Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Code to Install Backend Dependencies
+        working-directory: backend
+        run: npm install
+
+  # Test job: Run backend tests
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Code Checkout for this repo
+        uses: actions/checkout@v3
+
+      - name: Code To Run Backend Tests
+        working-directory: backend
+        run: npm test
+
+  # Deploy stage will Set up Python for CDK, install dependencies, and deploy infrastructure
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Code for this repo
+        uses: actions/checkout@v3
+
+      - name: Credentials setting for AWS account 
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Setting up the Python for CDK
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+
+      - name: Code to Install CDK and Dependencies
+        run: |
+          pip install -r Infrastructure/requirements.txt
+          npm install -g aws-cdk
+
+      - name: Code to Synthesize and Deploy Infrastructure
+        run: |
+          cd Infrastructure
+          cdk synth
+          cdk deploy --require-approval never
