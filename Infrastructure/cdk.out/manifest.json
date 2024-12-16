@@ -1,0 +1,179 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "WebAppStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "WebAppStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "WebAppStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "WebAppStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f1c2c24657f7c18784bf9a028f270c81e86f1533ec0cd3abd2ee88bcc91e1d6a.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "WebAppStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "WebAppStack.assets"
+      ],
+      "metadata": {
+        "/WebAppStack/FrontendBucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FrontendBucketEFE2E19C"
+          }
+        ],
+        "/WebAppStack/BackendFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendFunctionServiceRoleCA938F8D"
+          }
+        ],
+        "/WebAppStack/BackendFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendFunction63314140"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e22828097A84DA8"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280CloudWatchRole1308CFBF"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280AccountA3D6391D"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280Deployment0BDC9CB36f5570bc38d3a32481d7e86862e78f72"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280DeploymentStageprod979147F0"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280Endpoint10F891F1"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280proxy40DE2FBB"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/{proxy+}/ANY/ApiPermission.WebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280proxyANYApiPermissionWebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5ANYproxyFE5A7E70"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/{proxy+}/ANY/ApiPermission.Test.WebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280proxyANYApiPermissionTestWebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5ANYproxy028C36B3"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280proxyANYE1B68023"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/ANY/ApiPermission.WebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280ANYApiPermissionWebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5ANY63F64AEE"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/ANY/ApiPermission.Test.WebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280ANYApiPermissionTestWebAppStackAPIEndpoint7d8b88f6f5e5431d9fe43f457e228280FA6E59F5ANY219FEC01"
+          }
+        ],
+        "/WebAppStack/APIEndpoint-7d8b88f6-f5e5-431d-9fe4-3f457e228280/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint7d8b88f6f5e5431d9fe43f457e228280ANY73894B60"
+          }
+        ],
+        "/WebAppStack/BucketName": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketName"
+          }
+        ],
+        "/WebAppStack/APIEndpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "APIEndpoint"
+          }
+        ],
+        "/WebAppStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/WebAppStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/WebAppStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/WebAppStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "WebAppStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
